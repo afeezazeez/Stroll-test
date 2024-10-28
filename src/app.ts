@@ -11,6 +11,9 @@ const app:Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/',(req: Request, res: Response, next: NextFunction) => {
+  res.send("APP IS WORKING")
+});
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     next(new ClientErrorException("Route not found", ResponseStatus.NOT_FOUND));
