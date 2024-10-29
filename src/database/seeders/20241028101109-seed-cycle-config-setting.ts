@@ -13,6 +13,6 @@ export = {
   },
 
   async down(queryInterface: QueryInterface) {
-    await queryInterface.bulkDelete('Settings', { key: 'cycle_duration' }, {});
+    await queryInterface.bulkDelete('Settings', { key: 'default_cycle_duration' }, {});
   },
 };

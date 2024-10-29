@@ -1,24 +1,24 @@
 import { Model, Table, Column, DataType } from 'sequelize-typescript';
 
 @Table({
-    tableName: 'Settings',
+    tableName: 'countries',
     paranoid: true,
     timestamps: true,
     underscored: true
 })
-export class Setting extends Model {
+export class Country extends Model {
     @Column({
-        type: DataType.STRING,
-        unique: true,
-        allowNull: false,
+        type: DataType.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
     })
-    key!: string;
+    id!: number;
 
     @Column({
         type: DataType.STRING,
         allowNull: false,
     })
-    value!: string;
+    name!: string;
 }
 
-export default Setting;
+export default Country;

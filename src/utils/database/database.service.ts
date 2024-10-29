@@ -23,8 +23,6 @@ import {models} from "../../database/models";
             models: models
         });
 
-
-
     }
 
      public static getInstance(): DatabaseService {

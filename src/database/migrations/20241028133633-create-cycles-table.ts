@@ -1,22 +1,21 @@
 import { QueryInterface, DataTypes } from 'sequelize';
 
-export = {
+export default {
   async up(queryInterface: QueryInterface) {
-    await queryInterface.createTable('settings', {
+    await queryInterface.createTable('cycles', {
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
+      },
+      start_date: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
-      key: {
-        type: DataTypes.STRING,
-        unique: true,
+      duration: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      value: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        comment: 'Duration in days',
       },
       created_at: {
         type: DataTypes.DATE,
@@ -36,6 +35,6 @@ export = {
   },
 
   async down(queryInterface: QueryInterface) {
-    await queryInterface.dropTable('settings');
+    await queryInterface.dropTable('cycles');
   },
 };

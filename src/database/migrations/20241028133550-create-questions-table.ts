@@ -1,22 +1,26 @@
 import { QueryInterface, DataTypes } from 'sequelize';
 
-export = {
+export default {
   async up(queryInterface: QueryInterface) {
-    await queryInterface.createTable('settings', {
+    await queryInterface.createTable('questions', {
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
+      },
+      content: {
+        type: DataTypes.TEXT,
         allowNull: false,
       },
-      key: {
-        type: DataTypes.STRING,
-        unique: true,
+      country_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      value: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        references: {
+          model: 'countries',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       created_at: {
         type: DataTypes.DATE,
@@ -36,6 +40,6 @@ export = {
   },
 
   async down(queryInterface: QueryInterface) {
-    await queryInterface.dropTable('settings');
+    await queryInterface.dropTable('questions');
   },
 };

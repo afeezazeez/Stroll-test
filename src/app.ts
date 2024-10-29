@@ -3,9 +3,6 @@ import ErrorHandler from "./middlewares/error.handler";
 import {ClientErrorException} from "./exceptions/client.error.exception";
 import {ResponseStatus} from "./enums/http-status-codes";
 
-
-
-
 const app:Application = express();
 
 app.use(express.json());
