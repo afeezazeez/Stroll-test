@@ -1,5 +1,5 @@
-import { Model, Table, Column, DataType } from 'sequelize-typescript';
-
+import { Model, Table, Column, DataType,BelongsTo,ForeignKey } from 'sequelize-typescript';
+import Question from "./Question";
 @Table({
     tableName: 'question_assignments',
     paranoid: true,
@@ -22,11 +22,8 @@ export class QuestionAssignment extends Model {
     })
     cycle_id!: number;
 
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-        references: { model: 'questions', key: 'id' },
-    })
+    @ForeignKey(() => Question)
+    @Column
     question_id!: number;
 
     @Column({
@@ -35,6 +32,9 @@ export class QuestionAssignment extends Model {
         references: { model: 'countries', key: 'id' },
     })
     country_id!: number;
+
+    @BelongsTo(() => Question, { as: 'question' })
+    question!: Question;  // Define the relationship with Question
 
 
 }

@@ -27,6 +27,8 @@ export class Question extends Model {
     })
     country_id!: number;
 
+
+
 }
 
 export default Question;
